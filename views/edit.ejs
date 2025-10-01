@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Chat</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: #f0f2f5;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 25px 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      h3 {
+        color: #075e54;
+        margin-bottom: 15px;
+      }
+
+      p {
+        color: #555;
+        margin-bottom: 20px;
+      }
+
+      textarea {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        resize: vertical;
+        transition: border 0.3s;
+      }
+
+      textarea:focus {
+        border-color: #25d366;
+        outline: none;
+      }
+
+      button {
+        background-color: #25d366;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background 0.3s;
+      }
+
+      button:hover {
+        background-color: #128c7e;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Video Background -->
+    <video class="video-bg" autoplay muted loop playsinline>
+      <source src="/videos/bg.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="container">
+      <h3>Edit Chat: <%= chat._id %></h3>
+      <p>From <b><%= chat.from %></b> to <b><%= chat.to %></b></p>
+      <form method="post" action="/chats/<%= chat._id %>?_method=PUT">
+        <textarea name="msg" rows="8"><%= chat.msg %></textarea>
+        <br /><br />
+        <button>Edit Message</button>
+      </form>
+    </div>
+  </body>
+</html>
